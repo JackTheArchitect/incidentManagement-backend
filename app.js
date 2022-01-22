@@ -11,18 +11,11 @@ require('dotenv').config()
 
 
 // connecting to mongo
-    // console.log('USER: '+ process.env.DB_USER)
-    // console.log('PASS: ' +process.env.DB_PASS)
-const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@jaeukdb.2bsz7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-mongoose.connect(connectionString)
+// console.log('process.env.connectionString' + process.env.connectionString)
 
+mongoose.connect(process.env.connectionString)
   .then(() => console.log('connected to mongodb...'))
   .catch(err => console.log(err))
-
-// mongoose.connect(process.env.connectionString)
-//   .then(() => console.log('connected to mongodb...'))
-//   .catch(err => console.log(err))
-
 
 // For Test!!!
 // let db = require('./config');
