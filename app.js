@@ -7,16 +7,27 @@ const cors = require('cors') // ?????
 const app = express();
 require('dotenv').config()
 
-// // connecting to mongo
+
+
+
+// connecting to mongo
+    // console.log('USER: '+ process.env.DB_USER)
+    // console.log('PASS: ' +process.env.DB_PASS)
+const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@jaeukdb.2bsz7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+mongoose.connect(connectionString)
+
+  .then(() => console.log('connected to mongodb...'))
+  .catch(err => console.log(err))
+
 // mongoose.connect(process.env.connectionString)
 //   .then(() => console.log('connected to mongodb...'))
 //   .catch(err => console.log(err))
 
 
 // For Test!!!
-let db = require('./config');
-    // Connect to the Database (My Database: JaeukDB)
-mongoose.connect(db.mongodbUri);
+// let db = require('./config');
+//     // Connect to the Database (My Database: JaeukDB)
+// mongoose.connect(db.mongodbUri);
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
